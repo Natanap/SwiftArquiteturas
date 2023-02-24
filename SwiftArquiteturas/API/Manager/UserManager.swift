@@ -10,10 +10,11 @@ import Foundation
 protocol UserManagerProtocol {
     func register(email: String, password: String, sucessHandler: @escaping(UserModel) -> Void, failureHandler: @escaping(Error?) -> Void)
     
-    func login(email: String, password: String, completionHandler: @escaping(Result<UserModel, Error>)-> Void)
+//    func login(email: String, password: String, completionHandler: @escaping(Result<UserModel, Error>)-> Void)
+    func login(email: String, password: String, sucessHandler: @escaping(UserModel) -> Void, failureHandler: @escaping(Error?) -> Void)
 }
 
-class UserManager: UserManagerProtocol {
+class UserManager: UserManagerProtocol {   
     
     let business: UserBusinessProtocol
     
@@ -32,16 +33,26 @@ class UserManager: UserManagerProtocol {
             }
         }
     }
-    
-    func login(email: String, password: String, completionHandler: @escaping (Result<UserModel, Error>) -> Void) {
+    func login(email: String, password: String, sucessHandler: @escaping (UserModel) -> Void, failureHandler: @escaping (Error?) -> Void) {
         business.login(email: email, password: password) { result in
             switch result {
                 
             case .success(let userModel):
-                completionHandler(.success(userModel))
+                sucessHandler(userModel)
             case .failure(let error):
-                completionHandler(.failure(error))
+                failureHandler(error)
             }
         }
     }
+//    func login(email: String, password: String, completionHandler: @escaping (Result<UserModel, Error>) -> Void) {
+//        business.login(email: email, password: password) { result in
+//            switch result {
+//
+//            case .success(let userModel):
+//                completionHandler(.success(userModel))
+//            case .failure(let error):
+//                completionHandler(.failure(error))
+//            }
+//        }
+//    }
 }
