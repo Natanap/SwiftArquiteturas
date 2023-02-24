@@ -124,10 +124,10 @@
             </objects>
             <point key="canvasLocation" x="267" y="40"/>
         </scene>
-        <!--View Controller-->
+        <!--Register View Controller-->
         <scene sceneID="bHV-iX-iRf">
             <objects>
-                <viewController id="XIU-ft-DKO" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="registerViewController" id="XIU-ft-DKO" customClass="RegisterViewController" customModule="SwiftArquiteturas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="12z-dh-UHk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -173,6 +173,9 @@
                                 <color key="tintColor" systemColor="systemGreenColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Registrar"/>
+                                <connections>
+                                    <action selector="registerButtonTap:" destination="XIU-ft-DKO" eventType="touchUpInside" id="8on-JW-yqq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IAU-wL-ix6">
                                 <rect key="frame" x="56" y="523" width="302" height="40"/>
@@ -182,6 +185,9 @@
                                 <color key="tintColor" systemColor="systemGreenColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Entrar"/>
+                                <connections>
+                                    <action selector="openButtonTap:" destination="XIU-ft-DKO" eventType="touchUpInside" id="5ye-ib-d64"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gyi-OK-Cl8"/>
@@ -210,6 +216,11 @@
                             <constraint firstItem="Gyi-OK-Cl8" firstAttribute="trailing" secondItem="odg-Mt-ZJX" secondAttribute="trailing" constant="56" id="vjc-VB-E3P"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="confirmPasswordTextField" destination="eK8-WY-QTv" id="qfG-Gw-Gqa"/>
+                        <outlet property="emailTextField" destination="cMc-0L-gtw" id="de1-Hu-BxP"/>
+                        <outlet property="senhaTextField" destination="odg-Mt-ZJX" id="qCC-l3-pCx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zUv-uf-KZy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

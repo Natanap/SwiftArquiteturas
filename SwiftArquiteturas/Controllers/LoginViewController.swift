@@ -20,11 +20,7 @@ class LoginViewController: UIViewController {
         
         if let email = emailTextField.text , let password = senhaTextField.text{
             manager.login(email: email, password: password) { userModel in
-                print("sucesso")
-                let home = self.storyboard?.instantiateViewController(withIdentifier: "homeViewController") as! HomeViewController
-                home.modalPresentationStyle = .fullScreen
-                self.present(home, animated: true)
-                
+                self.openHomeView()
             } failureHandler: { error in
                 self.showMessage(title: "Error", message: error?.localizedDescription ?? "")
             }
@@ -33,7 +29,10 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func registerTappedButton(_ sender: Any) {
+        let register = self.storyboard?.instantiateViewController(withIdentifier: "registerViewController") as! RegisterViewController
+        register.modalPresentationStyle = .fullScreen
         
+        self.present(register, animated: true)
     }
     
     override func viewDidLoad() {
@@ -45,6 +44,12 @@ class LoginViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true)
+    }
+    
+    func openHomeView() {
+        let home = self.storyboard?.instantiateViewController(withIdentifier: "homeViewController") as! HomeViewController
+        home.modalPresentationStyle = .fullScreen
+        self.present(home, animated: true)
     }
     
 }
