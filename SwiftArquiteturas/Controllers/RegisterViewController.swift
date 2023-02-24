@@ -19,24 +19,11 @@ class RegisterViewController: UIViewController {
     
     
     @IBAction func registerButtonTap(_ sender: Any) {
-        if let email = emailTextField.text, let confirmpassword = confirmPasswordTextField.text, let password = senhaTextField.text {
-            if password != confirmpassword {
-                self.showMessage(title: "Erro", message: "Senhas não conferem")
-                return
-            }
-            let manager = UserManager(business: UserBusiness())
-            
-            manager.register(email: email, password: password) { usermModel in
-                self.openHomeView()
-            } failureHandler: { error in
-                self.showMessage(title: "Erro", message: error.localizedDescription)
-            }
-
-        }
+      
     }
     
     @IBAction func openButtonTap(_ sender: Any) {
-        self.dismiss(animated: true)
+       
     }
     
     
